@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "dao.StudentDao">
+  <resultMap id="myStudent" type="student" >
+    <id property="id" column="student_id"/>
+    <result property="name" column="name"/>
+    <result property="classes" column="class"/>
+    <result property="phone" column="phone"/>
+  </resultMap>
+  <!-- 根据id查询学生 -->
+  <select id="queryById" resultMap = "myStudent" parameterType = "String">
+    select 
+       student_id,name,class,phone
+    from
+       student
+    where student_id = #{id}
+  </select>
+  <!-- 查询所有学生 -->
+  <select id="queryAllStudent" resultMap = "myStudent">
+    select 
+       student_id,name,class,phone
+    from
+       student
+     ;
+    
+  </select>
+  
+  <!-- 下面的方法只是个示例，还没什么用，仅供参考 -->
+  <update id="insertIntoStudent">
+    update
+       seckill
+    set 
+       number = number -1 
+    where seckill_id = #{seckillId}
+    and start_time <![CDATA[ <= ]]> #{killTime}
+    and end_time >= #{killTime}
+    and number > 0 ;
+  </update>
+  
+  
+  
+  
+</mapper>
