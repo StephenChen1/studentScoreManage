@@ -1,6 +1,8 @@
 package web;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,18 +38,33 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value = "/navigate")
-	public String execution(HttpServletRequest request){
+	public String execution(HttpServletRequest request,HttpServletResponse response){
 		String position = request.getParameter("position");
+		String id = request.getParameter("id");
 		System.out.println("position::" + position);
+		System.out.println("id::" + id);
 		if(position.equals("student")){
+			addCookie(response,"student_id",id);
 			return "student";
 		}else if(position.equals("teacher")){
+			addCookie(response,"teacher_id",id);
 			return "teacher";
 		}else if(position.equals("manager")){
+			addCookie(response,"manager_id",id);
 			return "manager";
 		}else{
 			return "login";
 		}
 	}
+	
+	//添加cookie
+	private void addCookie(HttpServletResponse response,String position,String id){
+		Cookie cookie = new Cookie(position, id);
+        cookie.setMaxAge(30 * 60);// 设置为30min
+        cookie.setPath("/");
+        System.out.println("已添加===============");
+        response.addCookie(cookie);
+	}
+	
 	
 }

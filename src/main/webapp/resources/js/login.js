@@ -1,10 +1,10 @@
 
 (function ($) {
         //函数定义
-        $.navigate = function (position) {
+        $.navigate = function (position,id) {
             //函数内容
         	//alert("position:" + position);
-        	var url = "./navigate?position="+position ;
+        	var url = "./navigate?position="+position+"&id="+id ;
     		//把请求转发
         	window.location.href=url;
         }
@@ -43,7 +43,7 @@ $(document).ready(function(){
         		//alert("true");
         		//能登录，转到相应页面,调用自定义函数
 //        		var url = "./navigate?position="+position ;
-        		$.navigate(position);
+        		$.navigate(position,id);
         	}else if(!result){
         		//密码或账号错误，出现提示
         		//alert("false");
