@@ -27,18 +27,7 @@
     
   </select>
   
-  <!-- 下面的方法只是个示例，还没什么用，仅供参考 -->
-  <update id="insertIntoStudent">
-    update
-       seckill
-    set 
-       number = number -1 
-    where seckill_id = #{seckillId}
-    and start_time <![CDATA[ <= ]]> #{killTime}
-    and end_time >= #{killTime}
-    and number > 0 ;
-  </update>
-  
+ 
   
   
   

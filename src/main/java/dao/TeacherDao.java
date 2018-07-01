@@ -2,6 +2,8 @@ package dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import entity.Teacher;
 
 public interface TeacherDao {
@@ -11,7 +13,7 @@ public interface TeacherDao {
 	 * @param id
 	 * @return 返回教师信息
 	 */
-	Teacher queryById(String id);
+	Teacher queryById(@Param("id")String id);
 	
 	
 	/**
