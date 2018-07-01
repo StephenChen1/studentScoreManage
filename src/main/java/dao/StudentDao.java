@@ -41,7 +41,12 @@ public interface StudentDao {
 	int deleteFromStudent(String id);
 	
 
-	
+	/**
+	 * test
+	 * @param id
+	 * @return
+	 */
+	int test(String id);
 	
 	
 	
