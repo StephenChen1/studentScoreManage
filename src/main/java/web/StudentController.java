@@ -33,4 +33,4 @@ public class StudentController {
 		model.addAttribute("list", list);
 		return "studentList" ;
 	}
-}
+}         
