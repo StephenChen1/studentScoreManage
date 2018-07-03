@@ -17,11 +17,20 @@
 	</form>
 	 -->
 	 
+	 <!--  
 	 <form action="managerTest/getTeachers">
 	 	课程ID：<input type="text" name="course_id" value=""><br>
 	 	学年year：<input type="text" name="year" value=""><br>
 	 	学期semester：<input type="text" name="semester" value=""><br>
 	 	<input type="submit" value="查询">
+	 </form>
+	 -->
+	 
+	 <form action="managerTest/modifyPassword" method="POST">
+	 	ID：<input type="text" name="id" value=""><br>
+	 	新密码:<input type="password" name="password" value=""><br>
+	 	确认密码：<input type="confirm" name="password" value=""><br>
+	 	<input type="submit" value="修改密码">
 	 </form>
 </body>
 </html>

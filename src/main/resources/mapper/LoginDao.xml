@@ -2,15 +2,20 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace = "dao.LoginDao">
-  <!-- 根据id查询学生 -->
-  <select id="queryById" resultType = "loginMessage" parameterType = "String">
-    select 
-       id , nickname , password
-    from
-       login
-    where id = #{id}
-  </select>
-  
-  
+<mapper namespace="dao.LoginDao">
+	<!-- 根据id查询学生 -->
+	<select id="queryById" resultType="loginMessage" parameterType="String">
+		select
+		id , nickname , password
+		from
+		login
+		where id = #{id}
+	</select>
+
+	<!-- 修改密码 -->
+	<!-- boolean modifyPassword(@Param("id")String id,@Param("password")String 
+		password) -->
+	<update id="modifyPassword">
+		update login set password=#{password} where id=#{id}
+	</update>
 </mapper>

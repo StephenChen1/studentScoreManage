@@ -45,4 +45,10 @@ public class LoginServiceImpl implements LoginService{
 		
 		return false ;
 	}
+	
+	//Controller确认两次输入密码相同后，调用该service修改密码
+	//根据id确定修改谁的密码
+	public boolean modifyPassword(String id,String password) {
+		return loginDao.modifyPassword(id, password);
+	}
 }
