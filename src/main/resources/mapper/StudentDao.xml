@@ -24,9 +24,12 @@
     from
        student
      ;
-    
   </select>
   
+  <!-- 插入学生记录 -->
+  <insert id="addStudent">
+  	insert into student (student_id,name,class,phone) values (#{id},#{name},#{classes},#{phone})
+  </insert>
  
   
   

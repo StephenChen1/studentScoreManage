@@ -13,14 +13,10 @@ public interface TeachService {
 	 * @param teacher_id
 	 * @return 成功返回true，失败返回false
 	 */
-	public boolean arrange(String course_id, String teacher_id,String year,int semester);
+	public boolean arrange(String course_id, String teacher_id, String year, int semester);
 
-	
-	
-	
 	public List<String> getYear(String teacherId);
-	
 
-	public List<Teacher> getTeachers(String course_id,String year,int semester);
+	public List<Teacher> getTeachers(String course_id, String year, int semester);
 
 }

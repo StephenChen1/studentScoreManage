@@ -13,9 +13,12 @@
 	</select>
 
 	<!-- 修改密码 -->
-	<!-- boolean modifyPassword(@Param("id")String id,@Param("password")String 
-		password) -->
 	<update id="modifyPassword">
 		update login set password=#{password} where id=#{id}
 	</update>
+	
+	<!-- 根据id插入用户记录，默认初始密码与id相同 -->
+	<insert id="addLogin">
+		insert into login (id,nickname,password) values (#{id},'',#{id})
+	</insert>
 </mapper>

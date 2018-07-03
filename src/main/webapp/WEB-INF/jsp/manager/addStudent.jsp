@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>eRRor</title>
+<title>addStudent</title>
 </head>
 <body>
-	两次输入密码不同，修改失败！
+	添加学生结果：${isOK }
 </body>
 </html>

@@ -22,4 +22,11 @@ public interface LoginDao {
 	 * @return
 	 */
 	boolean modifyPassword(@Param("id") String id, @Param("password") String password);
+	
+	/**
+	 * 根据id插入用户记录，默认初始密码与id相同
+	 * @param id
+	 * @return
+	 */
+	boolean addLogin(@Param("id")String id);
 }

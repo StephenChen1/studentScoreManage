@@ -26,11 +26,32 @@
 	 </form>
 	 -->
 	 
+	 <!-- 
 	 <form action="managerTest/modifyPassword" method="POST">
 	 	ID：<input type="text" name="id" value=""><br>
 	 	新密码:<input type="password" name="password" value=""><br>
-	 	确认密码：<input type="confirm" name="password" value=""><br>
+	 	确认密码：<input type="password" name="confirm" value=""><br>
 	 	<input type="submit" value="修改密码">
 	 </form>
+	  -->
+	  
+	  <!-- 
+	  <form action="managerTest/addTeacher" method="POST">
+	  	teacher_id:<input type="text" name="id" value=""><br>
+	  	name：<input type="text" name="name" value=""><br>
+	  	phone:<input type="text" name="phone" value=""><br>
+	  	<input type="submit" value="增加教师"><br>
+	  </form>
+	   -->
+	   
+	  
+	  <form action="managerTest/addStudent" method="POST">
+	  	student_id:<input type="text" name="id" value=""><br>
+	  	name:<input type="text" name="name" value=""><br>
+	  	class:<input type="text" name="class" value=""><br>
+	  	phone:<input type="text" name="phone" value=""><br>
+	  	<input type="submit" value="增加学生"><br>
+	  </form>
+	   
 </body>
 </html>
