@@ -73,7 +73,7 @@
                 </div>
                 <div id="personInfor">
                     <p id="userName">stephen</p>
-                    <p><span>201525010507</span></p>
+                    <p><span id = "userId">201525010507</span></p>
                     <p>
                         <a href = "#">退出登录</a>
                     </p>
@@ -97,55 +97,10 @@
                         <div class="check-div">
                             <button class="btn btn-yellow btn-xs" data-toggle="modal" data-target="#addChar">选择查询条件</button>
                         </div>
-                        <div class="data-div">
-                            <!-- <div class="row tableHeader">
-                                <div class="col-xs-3 ">
-                                    课程代码
-                                </div>
-                                <div class="col-xs-3">
-                                    课程名
-                                </div>
-                                <div class="col-xs-3">
-                                    任课教师
-                                </div>
-                                <div class="col-xs-3">
-                                    分数
-                                </div>
-                            </div>
-                            <div class="tablebody">
-							
-                                <div class="row">
-                                    <div class="col-xs-3 ">
-                                        20001
-                                    </div>
-                                    <div class="col-xs-3">
-                                       <span>数据库原理</span>
-                                   </div>
-                                   <div class="col-xs-3">
-                                      郭老师
-                                   </div>
-								   <div class="col-xs-3">             
-								      100
-                                   </div>
-                                </div>
-                                <div class="row">
-                                  <div class="col-xs-3 ">
-									测试
-								  </div>
-								  <div class="col-xs-3">
-									<span>测试</span>
-							      </div>
-								  <div class="col-xs-3">
-									测试
-								  </div>
-								  <div class="col-xs-3">
-									测试
-								  </div>
-								</div>
-						    </div> -->
+                        <div class="data-div">                  
                             
 							<!--自己写table -->
-							<table class = "table">
+							<table class = "table" id = "scoreTable">
 							   <caption><div align="center" class="text-success">数据库原理成绩表</div></caption>
 							   <thead class="row tableHeader">
 							     <tr>
@@ -156,97 +111,13 @@
 								 </tr>
 							   </thead>
 							   <tbody class="tablebody">
-							     <tr>
-								    <td>
-									   201525010507
-									</td>
-									<td>
-									   陈祝林
-									</td>
-									<td>
-									    CS5
-									</td>
-									<td>
-									   99
-									</td>
-								 </tr>
-								 <tr>
-								    <td>
-									   测试
-									</td>
-									<td>
-									   测试
-									</td>
-									<td>
-									    测试
-									</td>
-									<td>
-									   测试
-									</td>
-								 </tr>
-								 <tr>
-								    <td>
-									   测试
-									</td>
-									<td>
-									   测试
-									</td>
-									<td>
-									    测试
-									</td>
-									<td>
-									   测试
-									</td>
-								 </tr>
-								 <tr>
-								    <td>
-									   测试
-									</td>
-									<td>
-									   测试
-									</td>
-									<td>
-									    测试
-									</td>
-									<td>
-									   测试
-									</td>
-								 </tr>
-								 <tr>
-								    <td>
-									   测试
-									</td>
-									<td>
-									   测试
-									</td>
-									<td>
-									    测试
-									</td>
-									<td>
-									   测试
-									</td>
-								 </tr>
-								 <tr>
-								    <td>
-									   测试
-									</td>
-									<td>
-									   测试
-									</td>
-									<td>
-									    测试
-									</td>
-									<td>
-									   测试
-									</td>
-								 </tr>
-							    
+							     
 							   </tbody>
 							</table>
 				   </div>
 
                    <!--页码块-->
-                   <footer class="footer">
+                   <!-- <footer class="footer">
                      <ul class="pagination">
                         <li>
                             <select>
@@ -275,7 +146,7 @@
                             </i>
                         </li>
                     </ul>
-                </footer>
+                </footer> -->
                 <!--选择成绩查询条件的弹出界面-->
                 <div class="modal fade" id="addChar" role="dialog" aria-labelledby="gridSystemModalLabel">
                     <div class="modal-dialog" role="document">
@@ -290,12 +161,12 @@
                                         <div class="form-group ">
                                             <label for="yearOptions" class="col-xs-3 control-label">学年：</label>
                                             <div class="col-xs-6 ">
-													<select class="form-control input-sm duiqi yearOrSemester" id="yearOptions">
-														<option>1</option>
-														<option>2</option>
-														<option>3</option>
-														<option>4</option>
-														<option>5</option>							
+													<select  class="form-control input-sm duiqi yearOrSemester" id="yearOptions" >
+														<!-- <option value ="2012-2013">2012-2013</option>
+														<option value ="2013-2014">2013-2014</option>
+														<option value ="2014-2015">2014-2015</option>
+														<option value ="2015-2016">2015-2016</option>
+														<option value ="2017-2018">2017-2018</option>	 -->						
 													</select>		
                                             </div>
                                         </div>
@@ -304,11 +175,9 @@
                                             <div class="col-xs-6 ">
                                                 <!-- <textarea class="form-control input-sm duiqi"></textarea> -->
 												<select class="form-control input-sm duiqi yearOrSemester" id="semesterOptions">
-														<option>1</option>
-														<option>2</option>
-														<option>3</option>
-														<option>4</option>
-														<option>5</option>							
+														<option value ="1">1</option>
+														<option value ="2">2</option>
+																					
 													</select>
                                             </div>
                                         </div>
@@ -316,11 +185,7 @@
                                             <label for="courseOptions" class="col-xs-3 control-label" >课程：</label>
                                             <div class="col-xs-6 ">
 													<select class="form-control input-sm duiqi" id="courseOptions">
-														<option>a</option>
-														<option>b</option>
-														<option>c</option>
-														<option>d</option>
-														<option>e</option>							
+																			
 													</select>		
 												
                                             </div>
@@ -331,8 +196,8 @@
                             </div>
 							<!-- 查询条件弹出框的确定与取消按钮-->
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
-                                <button type="button" class="btn btn-xs btn-green" data-dismiss="modal">查询</button>
+                                <button type="button" class="btn btn-xs btn-white" data-dismiss="modal" id = "cancel">取 消</button>
+                                <button type="button" class="btn btn-xs btn-green" data-dismiss="modal" id = "serch">查询</button>
                             </div>
                         </div>
                         <!-- /.modal-content -->

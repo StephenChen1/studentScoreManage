@@ -21,5 +21,13 @@ public interface TeachService {
 	 * @param course_id
 	 * @return
 	 */
+<<<<<<< HEAD
+	public List<Teacher> getTeachersByCID(String course_id);
+	
+	
+	public List<String> getYear(String teacherId);
+	
+=======
 	public List<Teacher> getTeachers(String course_id,String year,int semester);
+>>>>>>> c4e8409ca33a6ed292ee547b8f248c28e43e1909
 }

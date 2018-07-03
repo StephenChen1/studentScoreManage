@@ -4,8 +4,6 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import entity.*;
-
 public interface TeachDao {
 
 	/**
@@ -27,6 +25,14 @@ public interface TeachDao {
 	 * @param year
 	 * @return
 	 */
+<<<<<<< HEAD
+	public List<String> getTeacherIDsByCID(@Param("course_id") String course_id);
+
+	public List<String> getYearsByTeacherId(@Param("teacherId")String teacherId);
+
+
+=======
 	public List<String> getTeacherIDs(@Param("course_id") String course_id, @Param("year") String year,
 			@Param("semester") int semester);
+>>>>>>> c4e8409ca33a6ed292ee547b8f248c28e43e1909
 }
