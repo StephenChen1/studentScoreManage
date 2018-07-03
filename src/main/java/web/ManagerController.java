@@ -29,9 +29,9 @@ public class ManagerController {
 	public String arrange(Model model, HttpServletRequest request) {
 		String course_id = request.getParameter("course_id");
 		String teacher_id = request.getParameter("teacher_id");
-		String semester = request.getParameter("semester");
-		int year = Integer.parseInt(request.getParameter("year"));
-		boolean isOK = teachService.arrange(course_id, teacher_id,semester,year);
+		String year = request.getParameter("year");
+		int semester = Integer.parseInt(request.getParameter("semester"));
+		boolean isOK = teachService.arrange(course_id, teacher_id,year,semester);
 		model.addAttribute("isOK", isOK);
 		return "ok";
 	}
@@ -42,13 +42,14 @@ public class ManagerController {
 	 * @param request
 	 * @return
 	 */
-	@RequestMapping(value = "/getTeachersByCID")
-	public String getTeachersByCID(Model model, HttpServletRequest request) {
-		/*
+	@RequestMapping(value = "/getTeachers")
+	public String getTeachers(Model model, HttpServletRequest request) {
 		String course_id = request.getParameter("course_id");
-		List<Teacher> teachers = teachService.getTeachersByCID(course_id);
+		String year = request.getParameter("year");
+		int semester = Integer.parseInt(request.getParameter("semester"));
+		List<Teacher> teachers = teachService.getTeachers(course_id,year,semester);
 		model.addAttribute("teachers", teachers);
-		*/
 		return "manager/showTeachers";
+		
 	}
 }
