@@ -22,4 +22,8 @@ public interface TeachService {
 	 * @return
 	 */
 	public List<Teacher> getTeachersByCID(String course_id);
+	
+	
+	public List<String> getYear(String teacherId);
+	
 }

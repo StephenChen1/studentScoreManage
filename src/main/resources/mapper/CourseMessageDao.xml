@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "dao.CourseMessageDao">
+
+   <!-- 课程映射 -->
+   <resultMap id="myCourseSimpleMessage" type="courseSimpleMessage" >
+     <result property="teachId" column="teach_id"/>
+     <result property="courseId" column="course_id"/>
+     <result property="courseName" column="name"/>
+  </resultMap>
+  
+  <!-- 成绩映射 -->
+  <resultMap id="myScoreMessage" type="scoreMessage" >
+     <result property="studentId" column="teach_id"/>
+     <result property="studentName" column="name"/>
+     <result property="classes" column="class"/>
+     <result property="score" column="score"/>
+  </resultMap>
+  <!-- 根据教师id,年份，学期找到该条件下的教学信息（教学id),再用这些教学id查看有什么课程 -->
+  <select id="getCourseByIdYearSems" resultMap = "myCourseSimpleMessage" >
+    select 
+        teach_id , course_id , name
+    from
+        teach natural join course
+    where   teacher_id = #{teacherId} 
+        and year = #{year} 
+        and semester = #{semester} 
+        and is_entered = #{isEnteredFlag}
+  </select>
+  
+  
+  <!-- 根据教学ID查找该门课的学生的成绩 -->
+  <select id="queryScoreByTeachId" resultMap = "myScoreMessage" >
+    
+        
+    select 
+        student_id ,  name ,class , score
+    from
+        major natural join student
+    where   teach_id = #{teachId} 
+  </select>
+  
+</mapper>

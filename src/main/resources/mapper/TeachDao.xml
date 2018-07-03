@@ -10,5 +10,13 @@
 		(#{course_id},#{teacher_id},#{year},#{semester},false)
 	</insert>
 
-
+    <!-- 根据教师ID查出教学年份列表   distinct去除重复年份-->
+    <select id="getYearsByTeacherId" resultType = "String" parameterType = "String">
+    select distinct
+       year
+    from
+       teach
+    where teacher_id = #{teacherId}
+  </select>
+    
 </mapper>
