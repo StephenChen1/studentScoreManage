@@ -1,6 +1,7 @@
 package web;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -62,6 +63,14 @@ public class CourseController {
 		List<ScoreMessage> scores = courseService.getScoreByTeachId(myTeachId);
 		return scores ;
 		
+	}
+	
+	//以json格式返回所有课程名与课程ID
+	@RequestMapping("/all")
+	@ResponseBody
+	public List<Map<String,String>> getAllCourses(){
+		List<Map<String,String>> list = courseService.getAllCourseIdAndName();
+		return list;
 	}
 	
 }
