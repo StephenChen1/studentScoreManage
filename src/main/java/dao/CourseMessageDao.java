@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import entity.CourseSimpleMessage;
 import entity.ScoreMessage;
+import entity.StudentScoreMessage;
 
 public interface CourseMessageDao {
 
@@ -15,4 +16,7 @@ public interface CourseMessageDao {
 
 	//根据教学ID去查询该门课的成绩
 	List<ScoreMessage> queryScoreByTeachId(@Param("teachId")String teachId);
+	
+	//根据学生ID和学年、学期，查找该学生对应的成绩
+	List<StudentScoreMessage> queryStudentScore(@Param("studentId")String studentId,@Param("year")String year,@Param("semester")String semester);
 }

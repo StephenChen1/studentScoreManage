@@ -31,7 +31,13 @@
   	insert into student (student_id,name,class,phone) values (#{id},#{name},#{classes},#{phone})
   </insert>
  
-  
-  
+  <!-- 根据studentId查询原密码 -->
+  <select id="getStudentRawPassword" parameterType = "String" resultType="String">
+    select 
+       password
+    from
+       login
+    where id = #{studentId}
+  </select>  
   
 </mapper>

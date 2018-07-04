@@ -16,6 +16,9 @@ public interface TeachService {
 	public boolean arrange(String course_id, String teacher_id, String year, int semester);
 
 	public List<String> getYear(String teacherId);
+	
+	//获取学生的年份
+	public List<String> getStudentYear(String studentId);
 
 	public List<Teacher> getTeachers(String course_id, String year, int semester);
 

@@ -7,9 +7,15 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import dto.ModifyStudentPassword;
+import dto.YearAndSemesterRequest;
+import entity.StudentScoreMessage;
 import entity.Teacher;
 import service.LoginService;
 import service.StudentService;
@@ -81,6 +87,7 @@ public class ManagerController {
 		model.addAttribute("isOK", isOK);
 		return "manager/modified";
 	}
+	
 
 	/**
 	 * 添加学生记录

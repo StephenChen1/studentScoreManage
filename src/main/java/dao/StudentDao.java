@@ -51,4 +51,8 @@ public interface StudentDao {
 	 */
 	int test(String id);
 
+	
+	//获取学生数据库中的原密码
+	String getStudentRawPassword(@Param("studentId")String studentId);
+
 }

@@ -47,4 +47,17 @@ public class TeacherController {
 		return null ;		
 	 }
 	
+	@RequestMapping("/getStudentYear")
+	@ResponseBody
+	//通过@CookieValue("student_id") String studentId获取学生id
+	public List<String> getStudentYear(@CookieValue(value = "student_id", required = false) String studentId){
+		
+		if(studentId != null){
+			List<String> years = teachService.getStudentYear(studentId);
+			return years ;
+		}
+		
+		return null ;		
+	 }
+	
 }
