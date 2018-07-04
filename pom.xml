@@ -121,6 +121,15 @@
       <artifactId>spring-test</artifactId>
       <version>4.1.7.RELEASE</version>
     </dependency>
+    
+    <!-- 5、JSON依赖（我加的） -->
+    <!-- https://mvnrepository.com/artifact/org.json/json -->
+	<dependency>
+    	<groupId>org.json</groupId>
+    	<artifactId>json</artifactId>
+    	<version>20180130</version>
+	</dependency>
+    
   </dependencies>
   <build>
     <finalName>scoreManage</finalName>

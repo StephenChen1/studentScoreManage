@@ -31,4 +31,8 @@
 	</select>
 
 
+	<update id="modifyIsEntered">
+		update teach set is_entered=#{isEntered} where teach_id=#{teachId}
+	</update>
+
 </mapper>

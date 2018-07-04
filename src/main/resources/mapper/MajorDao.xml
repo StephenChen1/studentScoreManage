@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.MajorDao">
+	
+
+	<!-- 修改分数 -->
+	<!-- 根据教学Id，学生Id，改学生分数
+	boolean modifyOneScore(String teachId,String studentId,double studentScore); -->
+	<update id="modifyOneScore">
+		update major 
+		set score = #{studentScore} 
+		where teach_id=#{teachId} and student_id=#{studentId}
+	</update>
+</mapper>

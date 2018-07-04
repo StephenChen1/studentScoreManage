@@ -43,9 +43,9 @@ public class CourseController {
 		    List<CourseSimpleMessage> courses = courseService.getCourseByIdYearSems(teacherId, year, semester, isEnteredFlag);
 		    if(courses != null){
 		    	for(CourseSimpleMessage c : courses){
-		    		System.out.println("teachId:"+c.getTeachId());
-		    		System.out.println("courseId:"+c.getCourseId());
-		    		System.out.println("courseName:"+c.getCourseName());
+		    		System.out.println("teachId66666:"+c.getTeachId());
+		    		System.out.println("courseId6666:"+c.getCourseId());
+		    		System.out.println("courseName666:"+c.getCourseName());
 		    	}
 		    }
 		    return courses ;

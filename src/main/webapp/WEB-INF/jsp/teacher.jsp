@@ -80,7 +80,8 @@
                 </div>
                 <div class="meun-title">账号管理</div>
                 <div class="meun-item meun-item-active" href="#char" aria-controls="char" role="tab" data-toggle="tab"><img src="${basePath}resources/images/icon_chara_grey.png">查询成绩</div>
-                <div class="meun-item" href="#chan" aria-controls="chan" role="tab" data-toggle="tab"><img src="${basePath}resources/images/icon_change_grey.png">修改密码</div>
+                <div class="meun-item" 					href="#scoreEnter" aria-controls="scoreEnter" role="tab" data-toggle="tab" id = "scoreEnterPane"><img src="${basePath}resources/images/icon_source_grey.png">录入成绩</div>
+                <div class="meun-item" 					href="#chan"  aria-controls="chan" role="tab" data-toggle="tab"><img src="${basePath}resources/images/icon_change_grey.png">修改密码</div>
 			</div>
 			
             <!-- 右侧具体内容栏目 -->
@@ -101,7 +102,7 @@
                             
 							<!--自己写table -->
 							<table class = "table" id = "scoreTable">
-							   <caption><div align="center" class="text-success">数据库原理成绩表</div></caption>
+							   <caption><div align="center" class="text-success" id = "courseName">数据库原理成绩表</div></caption>
 							   <thead class="row tableHeader">
 							     <tr>
 								    <th class="col-xs-3">学号</th>
@@ -110,45 +111,111 @@
 									<th class="col-xs-3">成绩</th>
 								 </tr>
 							   </thead>
-							   <tbody class="tablebody">
+							   <tbody class="tablebody" id = "scoreTableBody">
 							     
 							   </tbody>
 							</table>
 				   </div>
 
-                   <!--页码块-->
-                   <!-- <footer class="footer">
-                     <ul class="pagination">
-                        <li>
-                            <select>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>6</option>
-                                <option>7</option>
-                                <option>8</option>
-                                <option>9</option>
-                                <option>10</option>
-                            </select>
-                            页
-                        </li>
-                        <li class="gray">
-                            共20页
-                        </li>
-                        <li>
-                            <i class="glyphicon glyphicon-menu-left">
-                            </i>
-                        </li>
-                        <li>
-                            <i class="glyphicon glyphicon-menu-right">
-                            </i>
-                        </li>
-                    </ul>
-                </footer> -->
-                <!--选择成绩查询条件的弹出界面-->
-                <div class="modal fade" id="addChar" role="dialog" aria-labelledby="gridSystemModalLabel">
+                	<!--选择成绩查询条件的弹出界面-->
+                	<div class="modal fade" id="addChar" role="dialog" aria-labelledby="gridSystemModalLabel">
+                    	<div class="modal-dialog" role="document">
+                        	<div class="modal-content">
+                            	<div class="modal-header">
+                                	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                	<h4 class="modal-title" id="gridSystemModalLabel">查询条件</h4>
+                            	</div>
+                            	<div class="modal-body">
+                                	<div class="container-fluid">
+                                    	<form class="form-horizontal">
+                                        	<div class="form-group ">
+                                            	<label for="yearOptions" class="col-xs-3 control-label">学年：</label>
+                                            	<div class="col-xs-6 ">
+													<select  class="form-control input-sm duiqi yearOrSemester" id="yearOptions" >
+														<!-- <option value ="2012-2013">2012-2013</option>
+														<option value ="2013-2014">2013-2014</option>
+														<option value ="2014-2015">2014-2015</option>
+														<option value ="2015-2016">2015-2016</option>
+														<option value ="2017-2018">2017-2018</option>	 -->						
+													</select>		
+                                            	</div>
+                                        	</div>
+                                        	<div class="form-group">
+                                            	<label for="semesterOptions" class="col-xs-3 control-label" >学期：</label>
+                                            	<div class="col-xs-6 ">
+                                                	<!-- <textarea class="form-control input-sm duiqi"></textarea> -->
+													<select class="form-control input-sm duiqi yearOrSemester" id="semesterOptions">
+														<option value ="1">1</option>
+														<option value ="2">2</option>
+																					
+													</select>
+                                            	</div>
+                                        	</div>
+                                        	<div class="form-group ">
+                                            	<label for="courseOptions" class="col-xs-3 control-label" >课程：</label>
+                                            	<div class="col-xs-6 ">
+													<select class="form-control input-sm duiqi" id="courseOptions">
+																			
+													</select>		
+												
+                                            	</div>
+                                        	</div>
+
+                                    	</form>
+                                	</div>
+                             	</div>
+								<!-- 查询条件弹出框的确定与取消按钮-->
+                            	<div class="modal-footer">
+                                	<button type="button" class="btn btn-xs btn-white" data-dismiss="modal" id = "cancel">取 消</button>
+                                	<button type="button" class="btn btn-xs btn-green" data-dismiss="modal" id = "serch">查询</button>
+                            	</div>
+                        	</div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
+
+            </div>
+            		<!--成绩查询模块结束 -->
+            		
+            		
+            		
+            		<!-- 成绩录入模块 -->
+                    <div role="tabpanel" class="tab-pane" id="scoreEnter">
+
+                        <div class="check-div">
+                            <button class="btn btn-yellow btn-xs" data-toggle="modal" data-target="#chooseCondition">选择查询条件</button>
+                        </div>
+                        <div class="data-div">                  
+                            
+							<!--自己写table -->
+							<table class = "table" id = "scoreEnterTable">
+							   <caption><div align="center" class="text-success"><span id = "courseEnterName">数据库原理成绩表</span></div></caption>
+							   <thead class="row tableHeader">
+							     <tr>
+								    <th class="col-xs-3">学号</th>
+									<th class="col-xs-3">姓名</th>
+									<th class="col-xs-3">班级</th>
+									<th class="col-xs-3">成绩</th>
+								 </tr>
+							   </thead>
+							   <tbody class="tablebody" id = "scoreEnterTableBody">
+							     
+							   </tbody>
+							</table>
+				   </div>
+					<!-- 底部提交  查询 按钮 -->
+					<footer align = "center" class="footer">
+                   		<div class="footer">
+                                <button type="button" class="btn btn-xs btn-white" data-dismiss="modal" id = "commitEnter">提交</button>
+                                <button type="button" class="btn btn-xs btn-green" data-dismiss="modal" id = "cancelEnter">取消</button>
+                                <button type="button" class="btn btn-xs btn-green" data-dismiss="modal" id = "saveEnter">保存</button>
+                    	</div>
+                    </footer>
+                   
+                <!--选择录入成绩的课程的查询条件的弹出界面-->
+                <div class="modal fade" id="chooseCondition" role="dialog" aria-labelledby="gridSystemModalLabel">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -159,9 +226,9 @@
                                 <div class="container-fluid">
                                     <form class="form-horizontal">
                                         <div class="form-group ">
-                                            <label for="yearOptions" class="col-xs-3 control-label">学年：</label>
+                                            <label for="yearOptionsEnter" class="col-xs-3 control-label">学年：</label>
                                             <div class="col-xs-6 ">
-													<select  class="form-control input-sm duiqi yearOrSemester" id="yearOptions" >
+													<select  class="form-control input-sm duiqi yearOrSemesterEnter" id="yearOptionsEnter" >
 														<!-- <option value ="2012-2013">2012-2013</option>
 														<option value ="2013-2014">2013-2014</option>
 														<option value ="2014-2015">2014-2015</option>
@@ -171,10 +238,10 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="semesterOptions" class="col-xs-3 control-label" >学期：</label>
+                                            <label for="semesterOptionsEnter" class="col-xs-3 control-label" >学期：</label>
                                             <div class="col-xs-6 ">
                                                 <!-- <textarea class="form-control input-sm duiqi"></textarea> -->
-												<select class="form-control input-sm duiqi yearOrSemester" id="semesterOptions">
+												<select class="form-control input-sm duiqi yearOrSemesterEnter" id="semesterOptionsEnter">
 														<option value ="1">1</option>
 														<option value ="2">2</option>
 																					
@@ -182,9 +249,9 @@
                                             </div>
                                         </div>
                                         <div class="form-group ">
-                                            <label for="courseOptions" class="col-xs-3 control-label" >课程：</label>
+                                            <label for="courseOptionsEnter" class="col-xs-3 control-label" >课程：</label>
                                             <div class="col-xs-6 ">
-													<select class="form-control input-sm duiqi" id="courseOptions">
+													<select class="form-control input-sm duiqi" id="courseOptionsEnter">
 																			
 													</select>		
 												
@@ -196,8 +263,8 @@
                             </div>
 							<!-- 查询条件弹出框的确定与取消按钮-->
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-xs btn-white" data-dismiss="modal" id = "cancel">取 消</button>
-                                <button type="button" class="btn btn-xs btn-green" data-dismiss="modal" id = "serch">查询</button>
+                                <button type="button" class="btn btn-xs btn-white" data-dismiss="modal" id = "cancelEnter">取 消</button>
+                                <button type="button" class="btn btn-xs btn-green" data-dismiss="modal" id = "serchEnter">确定</button>
                             </div>
                         </div>
                         <!-- /.modal-content -->
@@ -207,44 +274,47 @@
                 <!-- /.modal -->
 
             </div>
-            <!--账号管理模块结束 -->
+            		<!--成绩录入模块结束 -->
+            		
+            		
+            		
+            		
            
-            <!-- 修改密码模块 -->
-            <div role="tabpanel" class="tab-pane" id="chan"> 
-                <div class="check-div">
-                    原始密码为12312313
-                </div>
-                <div style="padding: 50px 0;margin-top: 50px;background-color: #fff; text-align: right;width: 420px;margin: 50px auto;">
-                    <form class="form-horizontal">
-                        <div class="form-group">
-                            <label for="sKnot" class="col-xs-4 control-label">原密码：</label>
-                            <div class="col-xs-5">
-                                <input type="" class="form-control input-sm duiqi" id="sKnot" placeholder="" style="margin-top: 7px;">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="sKnot" class="col-xs-4 control-label">新密码：</label>
-                            <div class="col-xs-5">
-                                <input type="" class="form-control input-sm duiqi" id="sKnot" placeholder="" style="margin-top: 7px;">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="sKnot" class="col-xs-4 control-label">重复密码：</label>
-                            <div class="col-xs-5">
-                                <input type="" class="form-control input-sm duiqi" id="sKnot" placeholder="" style="margin-top: 7px;">
-                            </div>
-                        </div>
-                        <div class="form-group text-right">
-                            <div class="col-xs-offset-4 col-xs-5" style="margin-left: 169px;">
-                                <button type="reset" class="btn btn-xs btn-white">取 消</button>
-                                <button type="submit" class="btn btn-xs btn-green">保存</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-            </div>
-		    <!--修改密码模块结束(上面的div) -->
+            		<!-- 修改密码模块 -->
+            		<div role="tabpanel" class="tab-pane" id="chan"> 
+                		<div class="check-div">
+                                                                      原始密码为12312313
+                		</div>
+                		<div style="padding: 50px 0;margin-top: 50px;background-color: #fff; text-align: right;width: 420px;margin: 50px auto;">
+                    		<form class="form-horizontal">
+                        		<div class="form-group">
+                            		<label for="sKnot" class="col-xs-4 control-label">原密码：</label>
+                            		<div class="col-xs-5">
+                                		<input type="" class="form-control input-sm duiqi" id="sKnot" placeholder="" style="margin-top: 7px;">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                	<label for="sKnot" class="col-xs-4 control-label">新密码：</label>
+                            		<div class="col-xs-5">
+                                		<input type="" class="form-control input-sm duiqi" id="sKnot" placeholder="" style="margin-top: 7px;">
+                            		</div>
+                        		</div>
+                        		<div class="form-group">
+                            		<label for="sKnot" class="col-xs-4 control-label">重复密码：</label>
+                            		<div class="col-xs-5">
+                                		<input type="" class="form-control input-sm duiqi" id="sKnot" placeholder="" style="margin-top: 7px;">
+                            		</div>
+                        		</div>
+                        		<div class="form-group text-right">
+                            		<div class="col-xs-offset-4 col-xs-5" style="margin-left: 169px;">
+                                		<button type="reset" class="btn btn-xs btn-white">取 消</button>
+                                		<button type="submit" class="btn btn-xs btn-green">保存</button>
+                            		</div>
+                        		</div>
+                    		</form>
+                		</div>
+            		</div>
+		     		<!--修改密码模块结束(上面的div) -->
           </div> 
             
         </div>

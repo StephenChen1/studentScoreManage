@@ -35,4 +35,7 @@ public interface TeachDao {
 	public List<String> getTeacherIDs(@Param("course_id") String course_id, @Param("year") String year,
 			@Param("semester") int semester);
 
+	
+	//把isEntered改为1或0
+	boolean modifyIsEntered(@Param("teachId") String teachId,@Param("isEntered")int isEntered);
 }
