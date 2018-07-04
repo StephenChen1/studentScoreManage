@@ -2,28 +2,33 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace = "dao.TeacherDao">
-  <resultMap id="myTeacher" type="teacher" >
-    <id property="id" column="teacher_id"/>
-    <result property="name" column="name"/>
-    <result property="phone" column="phone"/>
-  </resultMap>
-  <!-- 根据id查询教师 -->
-  <select id="queryById" resultMap = "myTeacher" parameterType = "String">
-    select 
-       teacher_id,name,phone
-    from
-       teacher
-    where teacher_id = #{id}
-  </select>
-  <!-- 查询所有教师 -->
-  <select id="queryAllTeacher" resultMap = "myTeacher">
-    select 
-       teacher_id,name,phone
-    from
-       teacher
-     ;
-    
-  </select>
-  
+<mapper namespace="dao.TeacherDao">
+	<resultMap id="myTeacher" type="teacher">
+		<id property="id" column="teacher_id" />
+		<result property="name" column="name" />
+		<result property="phone" column="phone" />
+	</resultMap>
+	<!-- 根据id查询教师 -->
+	<select id="queryById" resultMap="myTeacher"
+		parameterType="String">
+		select
+		teacher_id,name,phone
+		from
+		teacher
+		where teacher_id = #{id}
+	</select>
+	<!-- 查询所有教师 -->
+	<select id="queryAllTeacher" resultMap="myTeacher">
+		select
+		teacher_id,name,phone
+		from
+		teacher
+		;
+	</select>
+
+	<!-- 增加教师记录 -->
+	<insert id="addTeacher">
+		insert into teacher (teacher_id,name,phone) values
+		(#{id},#{name},#{phone})
+	</insert>
 </mapper>

@@ -14,4 +14,13 @@ public interface TeacherService {
 	 */
 	Teacher getTeacherMessageById(String teacherId);
 	
+	
+	/**
+	 * 添加老师记录
+	 * @param id
+	 * @param name
+	 * @param phone
+	 * @return
+	 */
+	boolean addTeacher(String id,String name,String phone);
 }

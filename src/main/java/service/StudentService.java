@@ -12,5 +12,14 @@ public interface StudentService {
 	 */
 	List<Student> getStudentList();
 	
+	/**
+	 * 添加学生记录
+	 * @param id
+	 * @param name
+	 * @param classes
+	 * @param phone
+	 * @return
+	 */
+	boolean addStudent(String id,String name,String classes,String phone);
 }
 

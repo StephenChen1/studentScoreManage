@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import entity.Teacher;
 import service.LoginService;
+import service.StudentService;
 import service.TeachService;
+import service.TeacherService;
 
 @Controller
 @RequestMapping("/managerTest")
@@ -20,6 +22,10 @@ public class ManagerController {
 
 	@Autowired
 	private TeachService teachService;
+	@Autowired
+	private StudentService studentService;
+	@Autowired
+	private TeacherService teacherService;
 	@Autowired
 	private LoginService loginService;
 
@@ -57,9 +63,8 @@ public class ManagerController {
 	}
 
 	/**
-	 * 判断输入的两次密码是否相同
-	 * 不同的话blah blah blah
-	 * 相同的话修改密码
+	 * 判断输入的两次密码是否相同 不同的话blah blah blah待定 相同的话修改密码
+	 * 
 	 * @param model
 	 * @param request
 	 * @return
@@ -69,11 +74,51 @@ public class ManagerController {
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
 		String confirm = request.getParameter("confirm");
-		if(!(password == confirm)) {
-			return "notModified";
+		if (!(password.equals(confirm))) {
+			return "manager/notModified";
 		}
 		boolean isOK = loginService.modifyPassword(id, password);
 		model.addAttribute("isOK", isOK);
 		return "manager/modified";
 	}
+
+	/**
+	 * 添加学生记录
+	 * 
+	 * @param model
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "/addStudent", method = RequestMethod.POST)
+	public String addStudent(Model model, HttpServletRequest request) {
+		String id = request.getParameter("id");
+		String name = request.getParameter("name");
+		String classes = request.getParameter("class");
+		String phone = request.getParameter("phone");
+		boolean isOK = studentService.addStudent(id, name, classes, phone);
+		model.addAttribute("isOK", isOK);
+		return "manager/addStudent";
+	}
+
+	/**
+	 * 添加教师记录
+	 * 
+	 * @param model
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "/addTeacher", method = RequestMethod.POST)
+	public String addTeacher(Model model, HttpServletRequest request) {
+		
+		String id = request.getParameter("id");
+		String name = request.getParameter("name");
+		String phone = request.getParameter("phone");
+		System.out.println("name = " + name);
+
+		boolean isOK = teacherService.addTeacher(id, name, phone);
+		model.addAttribute("isOK", isOK);
+
+		return "manager/addTeacher";
+	}
+
 }
