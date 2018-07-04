@@ -1,23 +1,29 @@
 package web;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import entity.Manager;
 import entity.Teacher;
 import service.LoginService;
+import service.ManagerService;
 import service.StudentService;
 import service.TeachService;
 import service.TeacherService;
 
 @Controller
-@RequestMapping("/managerTest")
+@RequestMapping("/manager")
 public class ManagerController {
 
 	@Autowired
@@ -28,6 +34,8 @@ public class ManagerController {
 	private TeacherService teacherService;
 	@Autowired
 	private LoginService loginService;
+	@Autowired
+	private ManagerService managerService;
 
 	/**
 	 * 安排教学任务
@@ -36,14 +44,14 @@ public class ManagerController {
 	 * @return
 	 */
 	@RequestMapping(value = "/arrange")
-	public String arrange(Model model, HttpServletRequest request) {
-		String course_id = request.getParameter("course_id");
-		String teacher_id = request.getParameter("teacher_id");
+	@ResponseBody
+	public boolean arrange(Model model, HttpServletRequest request) {
+		String course_id = request.getParameter("courseId");
+		String teacher_id = request.getParameter("teacherId");
 		String year = request.getParameter("year");
 		int semester = Integer.parseInt(request.getParameter("semester"));
 		boolean isOK = teachService.arrange(course_id, teacher_id, year, semester);
-		model.addAttribute("isOK", isOK);
-		return "manager/ok";
+		return isOK;
 	}
 
 	/**
@@ -53,13 +61,13 @@ public class ManagerController {
 	 * @return
 	 */
 	@RequestMapping(value = "/getTeachers")
-	public String getTeachers(Model model, HttpServletRequest request) {
-		String course_id = request.getParameter("course_id");
+	@ResponseBody
+	public List<Teacher> getTeachers(HttpServletRequest request) {
+		String course_id = request.getParameter("courseId");
 		String year = request.getParameter("year");
 		int semester = Integer.parseInt(request.getParameter("semester"));
 		List<Teacher> teachers = teachService.getTeachers(course_id, year, semester);
-		model.addAttribute("teachers", teachers);
-		return "manager/showTeachers";
+		return teachers;
 	}
 
 	/**
@@ -70,16 +78,12 @@ public class ManagerController {
 	 * @return
 	 */
 	@RequestMapping(value = "/modifyPassword", method = RequestMethod.POST)
-	public String modifyPassword(Model model, HttpServletRequest request) {
+	@ResponseBody
+	public boolean modifyPassword(HttpServletRequest request) {
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
-		String confirm = request.getParameter("confirm");
-		if (!(password.equals(confirm))) {
-			return "manager/notModified";
-		}
 		boolean isOK = loginService.modifyPassword(id, password);
-		model.addAttribute("isOK", isOK);
-		return "manager/modified";
+		return isOK;
 	}
 
 	/**
@@ -90,14 +94,14 @@ public class ManagerController {
 	 * @return
 	 */
 	@RequestMapping(value = "/addStudent", method = RequestMethod.POST)
-	public String addStudent(Model model, HttpServletRequest request) {
-		String id = request.getParameter("id");
+	@ResponseBody
+	public boolean addStudent(HttpServletRequest request) {
+		String id = request.getParameter("studentId");
 		String name = request.getParameter("name");
 		String classes = request.getParameter("class");
 		String phone = request.getParameter("phone");
 		boolean isOK = studentService.addStudent(id, name, classes, phone);
-		model.addAttribute("isOK", isOK);
-		return "manager/addStudent";
+		return isOK;
 	}
 
 	/**
@@ -108,17 +112,30 @@ public class ManagerController {
 	 * @return
 	 */
 	@RequestMapping(value = "/addTeacher", method = RequestMethod.POST)
-	public String addTeacher(Model model, HttpServletRequest request) {
-		
-		String id = request.getParameter("id");
-		String name = request.getParameter("name");
-		String phone = request.getParameter("phone");
-		System.out.println("name = " + name);
-
+	@ResponseBody
+	public boolean addTeacher(Model model, HttpServletRequest request) {
+		String id = request.getParameter("teacherId");
+		String name = request.getParameter("teacherName");
+		String phone = request.getParameter("teacherPhone");
 		boolean isOK = teacherService.addTeacher(id, name, phone);
-		model.addAttribute("isOK", isOK);
-
-		return "manager/addTeacher";
+		return isOK;
 	}
 
+	/**
+	 * 获取当前登录教务员的信息
+	 * 
+	 * @param manager_id
+	 * @return
+	 */
+	//TODO 测试
+	@RequestMapping(value = "/getCurrentManager")
+	@ResponseBody
+	public Map<String, String> getCurrentManager(
+			@CookieValue(value = "manager_id", required = false) String manager_id) {
+		Manager currentM = managerService.queryById(manager_id);
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("managerName", currentM.getName());
+		map.put("managerId", currentM.getId());
+		return map;
+	}
 }

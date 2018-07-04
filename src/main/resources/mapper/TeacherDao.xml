@@ -9,7 +9,7 @@
 		<result property="phone" column="phone" />
 	</resultMap>
 	<!-- 根据id查询教师 -->
-	<select id="queryById" resultMap="myTeacher"
+	<select id="queryById" resultMap="myTeacher">
 		parameterType="String">
 		select
 		teacher_id,name,phone
