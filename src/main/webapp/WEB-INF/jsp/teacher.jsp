@@ -102,7 +102,7 @@
                             
 							<!--自己写table -->
 							<table class = "table" id = "scoreTable">
-							   <caption><div align="center" class="text-success" id = "courseName">数据库原理成绩表</div></caption>
+							   <caption><div align="center" class="text-success" id = "courseName">成绩单</div></caption>
 							   <thead class="row tableHeader">
 							     <tr>
 								    <th class="col-xs-3">学号</th>
@@ -191,7 +191,7 @@
                             
 							<!--自己写table -->
 							<table class = "table" id = "scoreEnterTable">
-							   <caption><div align="center" class="text-success"><span id = "courseEnterName">数据库原理成绩表</span></div></caption>
+							   <caption><div align="center" class="text-success"><span id = "courseEnterName">成绩单</span></div></caption>
 							   <thead class="row tableHeader">
 							     <tr>
 								    <th class="col-xs-3">学号</th>
