@@ -148,7 +148,7 @@ $(document).ready(function(){
 	$("#serch").click(function(){
 		//显示课程名
 		var courseName = $("#courseOptions option:selected").text();
-		$("#courseName").text = courseName ;
+		$("#courseName").text(courseName +"成绩单");
 		   
 		
 		//得到教学id
@@ -204,7 +204,7 @@ $(document).ready(function(){
 		
 		//得到课程名
 		var courseName = $("#courseOptionsEnter option:selected").text();
-		$("#courseNameEnter").text = courseName ;
+		$("#courseNameEnter").text(courseName);
 		//alert(courseName);
 		//得到教学id
 		var teachId = $("#courseOptionsEnter option:selected").val();
@@ -310,6 +310,8 @@ $(document).ready(function(){
               	//返回true说明成功提交，展示提交后的成绩
               	if(result){
               		alert("提交成功！！")
+              	  //清空表格
+          	      $("#scoreEnterTableBody").find("tr").remove(); 
               	}else{
               		alert("提交失败！！")
               	}
