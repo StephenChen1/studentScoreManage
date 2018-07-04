@@ -1,22 +1,18 @@
 (function ($) {
-        //函数定义，得到所有教师ID和教师姓名，展示在教师ID下拉框     教师名（ID）
-        $.showAllTeacherInSelect = function () {
+        //函数定义，得到所有教师ID，展示在教师ID下拉框
+        $.showAllTeacher = function () {
         	  //参数 ：无
-              //返回教师ID和姓名的对象数组
+              //返回教师ID数组
               $.ajax({
               	  type : "post",
               	  url:"../teacher/all",
-              	  contentType:"application/json",
-                  
+              	  contentType:"application/json",   
                   success:function(result){
                 	  $("#teacherIdOptions").find("option").remove();   
            	         //把安排课程页面  教师ID下拉框填上
-             	      for(var i = 0 ; i < result.length ; i ++){   
-             	    	  //教师ID,存于value，方便后面获取
-             	    	  var teacherId = result[i].teacherId;
-             	    	  // 教师名（ID）
-             	    	  var text = result[i].teacherName +"("+teacherId+")";
-             	    	  $("#teacherIdOptions").append("<option value='"+teacherId+"'>"+text+"</option>"); 
+             	      for(var i = 0 ; i < result.length ; i ++){            
+             	    	  var text = result[i];
+             	    	  $("#teacherIdOptions").append("<option value='"+text+"'>"+text+"</option>"); 
              	      }
                   } 	       
               });
@@ -31,7 +27,6 @@
               	  type : "post",
               	  url:"../course/all",
               	  contentType:"application/json",
-                  
                   success:function(result){
                 	  $("#courseIDOptions").find("option").remove();   
            	         //把安排课程页面  教师ID下拉框填上
@@ -89,7 +84,7 @@ $(document).ready(function(){
         }
 	});
 	
-	
+
 	
 	//安排课程界面事件开始
 	
@@ -348,5 +343,4 @@ $(document).ready(function(){
 		
 	});
 	//修改密码模块结束
-	
 });

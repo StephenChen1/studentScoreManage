@@ -19,6 +19,15 @@
        teach
     where teacher_id = #{teacherId}
   </select>
+
+  <!-- 根据学生ID查出教学年份列表   distinct去除重复年份-->
+    <select id="getYearsByStudentId" resultType = "String" parameterType = "String">
+    select distinct
+       year
+    from
+        student NATURAL JOIN major NATURAL JOIN teach 
+    where student.student_id = #{studentId}
+  </select>
     
 
 	<!-- 根据课程信息返回所有任教老师ID -->

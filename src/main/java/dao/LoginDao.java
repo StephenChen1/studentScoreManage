@@ -18,7 +18,7 @@ public interface LoginDao {
 	 * 修改（教师/学生）密码
 	 * 
 	 * @param id
-	 * @param passwd
+	 * @param password
 	 * @return
 	 */
 	boolean modifyPassword(@Param("id") String id, @Param("password") String password);

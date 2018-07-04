@@ -42,5 +42,10 @@ public class TeachServiceImpl implements TeachService {
 		List<String> years = teachDao.getYearsByTeacherId(teacherId);
 		return years;
 	}
+	
+	public List<String> getStudentYear(String studentId) {
+		List<String> years = teachDao.getYearsByStudentId(studentId);
+		return years;
+	}
 
 }

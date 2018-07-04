@@ -10,11 +10,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
+
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
 import entity.Manager;
+import dto.ModifyStudentPassword;
+import dto.YearAndSemesterRequest;
+import entity.StudentScoreMessage;
 import entity.Teacher;
 import service.LoginService;
 import service.ManagerService;
@@ -85,6 +91,7 @@ public class ManagerController {
 		boolean isOK = loginService.modifyPassword(id, password);
 		return isOK;
 	}
+	
 
 	/**
 	 * 添加学生记录

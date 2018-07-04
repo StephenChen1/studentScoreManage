@@ -98,7 +98,7 @@
                     <div role="tabpanel" class="tab-pane" id="arrangeCourse">
 
                         <div class="check-div">
-                            <button class="btn btn-yellow btn-xs" data-toggle="modal" data-target="#inputTeachMessage" id="arrangeBtn">安排课程</button>
+                            <button class="btn btn-yellow btn-xs" data-toggle="modal" data-target="#inputTeachMessage">安排课程</button>
                         </div>
                         <div class="data-div">                  
                             
@@ -134,7 +134,11 @@
                                             	<label for="teacherIdOptions" class="col-xs-3 control-label">教师ID：</label>
                                             	<div class="col-xs-6 ">
 													<select  class="form-control input-sm duiqi" id="teacherIdOptions" >
-																			
+														<!-- <option value ="2012-2013">2012-2013</option>
+														<option value ="2013-2014">2013-2014</option>
+														<option value ="2014-2015">2014-2015</option>
+														<option value ="2015-2016">2015-2016</option>
+														<option value ="2017-2018">2017-2018</option>	 -->						
 													</select>		
                                             	</div>
                                         	</div>
@@ -173,7 +177,7 @@
                                     	</form>
                                 	</div>
                              	</div>
-								<!-- 安排课程弹出框的确定与取消按钮-->
+								<!-- 查询条件弹出框的确定与取消按钮-->
                             	<div class="modal-footer">
                                 	<button type="button" class="btn btn-xs btn-white" data-dismiss="modal" id = "cancelArrange">取 消</button>
                                 	<button type="button" class="btn btn-xs btn-green" data-dismiss="modal" id = "arrange">安排</button>
@@ -186,7 +190,7 @@
                 <!-- /.modal -->
 
             </div>
-            		<!--安排课程模块结束 -->
+            		<!--成绩查询模块结束 -->
             		
             		
             		
@@ -194,7 +198,7 @@
                     <div role="tabpanel" class="tab-pane" id="showTeacher">
 
                         <div class="check-div">
-                            <button class="btn btn-yellow btn-xs" data-toggle="modal" data-target="#chooseTeacherCondition" id = "showTeacherBtn">查看教师</button>
+                            <button class="btn btn-yellow btn-xs" data-toggle="modal" data-target="#chooseTeacherCondition">查看教师</button>
                         </div>
                         <div class="data-div">                  
                             
@@ -341,8 +345,8 @@
                             </div>
 							<!-- 查询条件弹出框的确定与取消按钮-->
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-xs btn-white" data-dismiss="modal" id = "cancelAddTeacher">取 消</button>
-                                <button type="button" class="btn btn-xs btn-green" data-dismiss="modal" id = "addTeacherBtn">确定</button>
+                                <button type="button" class="btn btn-xs btn-white" data-dismiss="modal" id = "cancelEnter">取 消</button>
+                                <button type="button" class="btn btn-xs btn-green" data-dismiss="modal" id = "serchEnter">确定</button>
                             </div>
                         </div>
                         <!-- /.modal-content -->
@@ -358,11 +362,11 @@
                     <div role="tabpanel" class="tab-pane" id="addStudent">
 
                         <div class="check-div">
-                            <button class="btn btn-yellow btn-xs" data-toggle="modal" data-target="#addStudentMessage">添加学生</button>
+                            <button class="btn btn-yellow btn-xs" data-toggle="modal" data-target="#addStudentMessage">添加教师</button>
                         </div>
                         <div class="data-div">                  
                             
-							<!--显示学生列表 -->
+							<!--显示教师列表 -->
 							<table class = "table" id = "studentTable">
 							   <caption><div align="center" class="text-success"><span id = "studentTableTip">学生列表</span></div></caption>
 							   <thead class="row tableHeader">
@@ -447,9 +451,9 @@
             		
            
             		<!-- 修改密码模块 -->
-            		<div role="tabpanel" class="tab-pane" id="modifyPassword"> 
+            		<div role="tabpanel" class="tab-pane" id="chan"> 
                 		<div class="check-div">
-                          <span class = "text-success">修改用户密码</span>
+                                                                      原始密码为12312313
                 		</div>
                 		<div style="padding: 50px 0;margin-top: 50px;background-color: #fff; text-align: right;width: 420px;margin: 50px auto;">
                     		<form class="form-horizontal">
@@ -462,7 +466,7 @@
                                 <div class="form-group">
                                 	<label for="sKnot" class="col-xs-4 control-label">新密码：</label>
                             		<div class="col-xs-5">
-                                		<input type="text" class="form-control input-sm duiqi" id="newPassword" placeholder="" style="margin-top: 7px;">
+                                		<input type="text" class="form-control input-sm duiqi" id="sKnot" placeholder="" style="margin-top: 7px;">
                             		</div>
                         		</div>
                         		<div class="form-group">
