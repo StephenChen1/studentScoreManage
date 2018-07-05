@@ -4,23 +4,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
-
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
+import dto.IdAndPassword;
+import dto.SelectTeacherForm;
+import dto.TeachMessageForm;
 import entity.Manager;
-import dto.ModifyStudentPassword;
-import dto.YearAndSemesterRequest;
-import entity.StudentScoreMessage;
+import entity.Student;
 import entity.Teacher;
 import service.LoginService;
 import service.ManagerService;
@@ -51,11 +47,13 @@ public class ManagerController {
 	 */
 	@RequestMapping(value = "/arrange")
 	@ResponseBody
-	public boolean arrange(Model model, HttpServletRequest request) {
-		String course_id = request.getParameter("courseId");
-		String teacher_id = request.getParameter("teacherId");
-		String year = request.getParameter("year");
-		int semester = Integer.parseInt(request.getParameter("semester"));
+	public boolean arrange(@RequestBody TeachMessageForm teachMessageForm) {
+		String course_id = teachMessageForm.getCourseId();
+		String teacher_id = teachMessageForm.getTeacherId();
+		String year = teachMessageForm.getYear();
+		System.out.println("year:"+year);
+		System.out.println("semester:"+teachMessageForm.getSemester());
+		int semester = Integer.parseInt(teachMessageForm.getSemester());
 		boolean isOK = teachService.arrange(course_id, teacher_id, year, semester);
 		return isOK;
 	}
@@ -68,11 +66,15 @@ public class ManagerController {
 	 */
 	@RequestMapping(value = "/getTeachers")
 	@ResponseBody
-	public List<Teacher> getTeachers(HttpServletRequest request) {
-		String course_id = request.getParameter("courseId");
-		String year = request.getParameter("year");
-		int semester = Integer.parseInt(request.getParameter("semester"));
-		List<Teacher> teachers = teachService.getTeachers(course_id, year, semester);
+	public List<Teacher> getTeachers(@RequestBody SelectTeacherForm selectTeacherForm) {
+		String courseId = selectTeacherForm.getCourseId();
+		String year = selectTeacherForm.getYear();
+		int semester = Integer.parseInt(selectTeacherForm.getSemester());
+		List<Teacher> teachers = teachService.getTeachers(courseId, year, semester);
+		for(Teacher teacher : teachers){
+			System.out.println("teacher:" +teacher.getId());
+			System.out.println("teacher:" +teacher.getName());
+		}
 		return teachers;
 	}
 
@@ -85,10 +87,11 @@ public class ManagerController {
 	 */
 	@RequestMapping(value = "/modifyPassword", method = RequestMethod.POST)
 	@ResponseBody
-	public boolean modifyPassword(HttpServletRequest request) {
-		String id = request.getParameter("id");
-		String password = request.getParameter("password");
+	public boolean modifyPassword(@RequestBody IdAndPassword  idAndPassword) {
+		String id = idAndPassword.getId();
+		String password = idAndPassword.getPassword();
 		boolean isOK = loginService.modifyPassword(id, password);
+		System.out.println("ISOK：" + isOK);
 		return isOK;
 	}
 	
@@ -102,11 +105,11 @@ public class ManagerController {
 	 */
 	@RequestMapping(value = "/addStudent", method = RequestMethod.POST)
 	@ResponseBody
-	public boolean addStudent(HttpServletRequest request) {
-		String id = request.getParameter("studentId");
-		String name = request.getParameter("name");
-		String classes = request.getParameter("class");
-		String phone = request.getParameter("phone");
+	public boolean addStudent(@RequestBody Student student) {
+		String id = student.getId();
+		String name = student.getName();
+		String classes = student.getClasses();
+		String phone = student.getPhone();
 		boolean isOK = studentService.addStudent(id, name, classes, phone);
 		return isOK;
 	}
@@ -120,10 +123,11 @@ public class ManagerController {
 	 */
 	@RequestMapping(value = "/addTeacher", method = RequestMethod.POST)
 	@ResponseBody
-	public boolean addTeacher(Model model, HttpServletRequest request) {
-		String id = request.getParameter("teacherId");
-		String name = request.getParameter("teacherName");
-		String phone = request.getParameter("teacherPhone");
+	public boolean addTeacher(@RequestBody Teacher teacher) {
+		String id = teacher.getId();
+		System.out.println("addTeacherID:" + id);
+		String name = teacher.getName();
+		String phone = teacher.getPhone();
 		boolean isOK = teacherService.addTeacher(id, name, phone);
 		return isOK;
 	}
@@ -145,4 +149,17 @@ public class ManagerController {
 		map.put("managerId", currentM.getId());
 		return map;
 	}
+	
+	
+	
+	//无参数得到所有学年
+	@RequestMapping(value="/getAllYears")
+	@ResponseBody
+	public List<String> getAllYears(){
+		List<String> years = teachService.getAllYears();
+		return years ;
+	}
+	
+	
+	
 }

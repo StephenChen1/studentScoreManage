@@ -22,4 +22,7 @@ public interface TeachService {
 
 	public List<Teacher> getTeachers(String course_id, String year, int semester);
 
+	
+	//得到所有学年
+	public List<String> getAllYears();
 }

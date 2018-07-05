@@ -1,6 +1,8 @@
 (function ($) {
-        //函数定义，得到所有教师ID，展示在教师ID下拉框
-        $.showAllTeacher = function () {
+        //函数定义，得到所有教师ID和教师名，展示在教师ID下拉框
+        $.showAllTeacherInSelect = function () {
+        	  //先移除下拉框内容
+        	  $("#teacherIdOptions").find("option").remove();  
         	  //参数 ：无
               //返回教师ID数组
               $.ajax({
@@ -11,8 +13,8 @@
                 	  $("#teacherIdOptions").find("option").remove();   
            	         //把安排课程页面  教师ID下拉框填上
              	      for(var i = 0 ; i < result.length ; i ++){            
-             	    	  var text = result[i];
-             	    	  $("#teacherIdOptions").append("<option value='"+text+"'>"+text+"</option>"); 
+             	    	  var text = result[i].teacherName+"("+result[i].teacherId+")";
+             	    	  $("#teacherIdOptions").append("<option value='"+result[i].teacherId+"'>"+text+"</option>"); 
              	      }
                   } 	       
               });
@@ -21,7 +23,10 @@
         
         //函数定义，得到所有课程ID和课程名，展示在名称为theSelect的select下拉框     课程名（ID）
         $.showAllCourseInSelect = function (theSelect) {
-        	  //参数 ：无
+        	  
+        	  //先移除下拉框内容
+        	  theSelect.find("option").remove();
+      	  	  //参数 ：无
               //返回课程ID和课程名的对象数组
               $.ajax({
               	  type : "post",
@@ -43,11 +48,14 @@
         
         //函数定义，得到所有学年，展示在查看教师界面的学年下拉框(后台已实现）
         $.showAllYearInSelect = function () {
-        	  //参数 ：无
+        	  
+        	//先移除下拉框内容
+      	    $("#yearSelect").find("option").remove();  
+        	//参数 ：无
               //返回学年数组
         	$.ajax({
         	      type : "post",
-        	      url:"../teacher/getYear",
+        	      url:"../manager/getAllYears",
         	  	  contentType:"application/json",
               
         	  	  success:function(result){
@@ -110,7 +118,7 @@ $(document).ready(function(){
 		//得到课程ID
 		var courseId = $("#courseIDOptions option:selected").val();
 		//得到input输入的学年
-		var year = $("yearInput").val();
+		var year = $("#yearInput").val();
 		//得到学期
 		var semester = $("#semesterOptions option:selected").val();
 		//JSON封装数据
@@ -168,7 +176,7 @@ $(document).ready(function(){
 	});
 	
 	
-	//弹出框查看按钮点击事件
+	//弹出框的查看按钮点击事件
 	$("#serchTeacher").click(function(){
 		//得到课程ID
 		var courseId = $("#courseIDSelect option:selected").val();
@@ -176,13 +184,18 @@ $(document).ready(function(){
 		var	year =  $("#yearSelect option:selected").val();
 		//得到学期
 		var semester = $("#semesterSelect option:selected").val();
+		//得到课程名+id格式
+		var courseIdAndName = $("#courseIDSelect option:selected").text();
+		//alert("c:" +courseId);
+		//alert("y:" +year);
+		//alert("s:" +semester);
 		//封装数据
 		var data = {
 			    courseId:courseId,
 			    year:year,
 			    semester:semester
 		}
-		//TODO 测试
+		//TODO 竟然显示不出来
 		//AJAX与后台交互，得到该课程的任课教师信息对象列表，并把循环展示在表格
 		$.ajax({
       	  	type : "post",
@@ -191,12 +204,15 @@ $(document).ready(function(){
             data:JSON.stringify(data),
             success:function(result){
             	//alert(result.length);
+            	//更新表头
+            	$("#courseTeachers").text(year+"学年 第"+semester+"学期 "+courseIdAndName +"教师列表");
+            	
             	//先删除表格中的内容
             	$("#teacherTableBody").find("tr").remove();   
             	//遍历展示数据
             	for(var i = 0 ; i < result.length ; i ++){
-              	  
-              	  	$("#scoreTable").append("<tr><td>"+result[i].teacherId+"</td>"+
+              
+              	  	$("#teacherTableBody").append("<tr><td>"+result[i].id+"</td>"+
               			       					"<td>"+result[i].name+"</td>"+
               			       					"<td>"+result[i].phone+"</td></tr>"
               	  	);
@@ -220,10 +236,14 @@ $(document).ready(function(){
 		var teacherPhone = $("#teacherPhoneInput").val();
 		//JSON封装参数
 		var data = {
-				teacherId : teacherId,
-				teacherName: teacherName ,
-				teacherPhone:teacherPhone
+				id : teacherId,
+				name: teacherName ,
+				phone:teacherPhone
 		}
+		alert(teacherId);
+		alert(teacherName);
+		alert(teacherPhone);
+		alert("addTeacher啦啦！！");
 		//TODO 测试
 		//AJAX与后台交互，添加一名教师信息，返回布尔值
 		$.ajax({
@@ -266,7 +286,7 @@ $(document).ready(function(){
 		var phone = $("#studentPhoneInput").val();
 		//封装数据
 		var data = {
-			  studentId: studentId,
+			  id: studentId,
 			  name: name,
 			  classes:classes ,
 			  phone:phone
@@ -303,11 +323,14 @@ $(document).ready(function(){
 	//修改按钮点击事件
 	$("#modifyBtn").click(function(){
 		//得到ID
-		var id = $("#userId").val();
+		var id = $("#userIdModify").val();
 		//得到新密码
 		var newpassword = $("#newPassword").val();
 		//得到确认密码
 		var defineNewPassword = $("#defineNewPassword").val();
+		//alert("id:" + id);
+		//alert("new:" + newpassword);
+		//alert("defineNew:" + defineNewPassword);
 		//判断两个密码是否相同,则与后台交互
 		if(newpassword == defineNewPassword){
 			//封装数据

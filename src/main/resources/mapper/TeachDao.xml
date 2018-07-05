@@ -30,6 +30,14 @@
   </select>
     
 
+	<!-- 得到所有学年 -->
+	<select id="getAllYears" resultType="String">
+		select distinct year
+		from
+		teach
+		
+	</select>
+
 	<!-- 根据课程信息返回所有任教老师ID -->
 	<select id="getTeacherIDs" resultType="String">
 		select teacher_id

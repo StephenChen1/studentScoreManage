@@ -39,4 +39,9 @@ public interface TeachDao {
 	
 	//把isEntered改为1或0
 	boolean modifyIsEntered(@Param("teachId") String teachId,@Param("isEntered")int isEntered);
+
+	//得到所有教学学年
+	public List<String> getAllYears();
+
+
 }
