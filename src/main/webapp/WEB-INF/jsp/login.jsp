@@ -38,7 +38,7 @@
 					<i class="icon"></i>
 					<input type="password" id = "password"/>
 					<div class="clear"> </div>
-					<div id = "loginTip"> </div>
+					<div align = "center"id = "loginTip"> </div>
 				</div>
 				 <div class="login-ic">
 				 <table>
@@ -65,7 +65,7 @@
 				
 			
 				<div class="log-bwn">
-					<input type = "submit"  id="login1" >
+					<input type = "submit"  id="login1" value="登录">
 				</div>
 				</div>
 			</div>

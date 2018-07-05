@@ -451,6 +451,8 @@
             		<div role="tabpanel" class="tab-pane" id="modifyPassword"> 
                 		<div class="check-div">
                                  <!-- 原始密码为12312313 -->
+                                 <!-- 用于显示用户修改密码操作结果 -->
+                   				 <div align="center"><span id="isTwoPassSame"></span></div>
                 		</div>
                 		<div style="padding: 50px 0;margin-top: 50px;background-color: #fff; text-align: right;width: 420px;margin: 50px auto;">
                     		<div class="form-horizontal">

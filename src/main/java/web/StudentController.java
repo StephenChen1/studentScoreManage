@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import dto.ModifyStudentPassword;
 import entity.Student;
-import entity.StudentScoreMessage;
 import service.LoginService;
 import service.StudentService;
+import service.TeachService;
 
 @Controller
 @RequestMapping("/student")
@@ -27,6 +27,8 @@ public class StudentController {
 	private StudentService studentService;
 	@Autowired
 	private LoginService loginService;
+	@Autowired
+	private TeachService teachService ;
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String list(Model model) {
@@ -94,6 +96,22 @@ public class StudentController {
 			}
 		}
 		return map;
+	}
+	
+	
+	//根据ID获取该学生的年份列表
+	@RequestMapping(value = "/getStudentYears", method = RequestMethod.POST)
+	@ResponseBody
+	public List<String> getStudentYears(@CookieValue(value = "student_id", required = false) String studentId){
+		
+		List<String> years = null ;
+		
+		if(studentId != null){
+			 years = teachService.getStudentYear(studentId);
+		}
+		
+		return years ;
+		
 	}
 
 }

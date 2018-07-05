@@ -333,6 +333,9 @@ $(document).ready(function(){
 		//alert("defineNew:" + defineNewPassword);
 		//判断两个密码是否相同,则与后台交互
 		if(newpassword == defineNewPassword){
+			
+			//隐藏提示信息
+			$("#isTwoPassSame").hide();
 			//封装数据
 			var data = {
 					id: id ,
@@ -351,7 +354,10 @@ $(document).ready(function(){
 		              //如果添加成功，提示
 		              if(result){
 		            	  alert("修改密码成功！");
-		            	  
+		            	  //把输入框清空
+		            	  $("#userIdModify").val("");
+		            	  $("#newPassword").val("");
+		            	  $("#defineNewPassword").val("");
 		              }else{
 		            	  alert("修改密码失败！！");
 		              }
@@ -360,7 +366,10 @@ $(document).ready(function(){
 			
 		}else{
 			//若不相等，则给出提示
-			alert("两个密码不一致！！")
+			//alert("两个密码不一致！！")
+			/*$('#isTwoPassSame').html("两个密码不一致！！");
+			$('#isTwoPassSame').style.color="red"; */
+			$("#isTwoPassSame").hide().html('<label class = "text-danger">两次密码不相同！</label>').show(300);
 		}
 		
 		

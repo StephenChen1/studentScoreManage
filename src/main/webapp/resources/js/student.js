@@ -54,7 +54,7 @@ $(document).ready(function(){
 	$.ajax({
   	      type : "post",
   	      //教师与学生获取年份方式一样，直接在教师基础上改
-  	      url:"../teacher/getStudentYear",
+  	      url:"../student/getStudentYears",
   	  	  contentType:"application/json",
         
           success:function(result){
@@ -64,20 +64,7 @@ $(document).ready(function(){
       	    	  var text = result[i];
       	    	  $("#yearOptions").append("<option value='"+text+"'>"+text+"</option>"); 
       	      }
-      	      
-      	    /*//初始化下拉框
-      		//得到年份下拉框中的第一个值，因为得不到选中的值（技术问题）option:selected 改成first也行
-      	    //后来发现不是技术问题，而是因为异步的原因，把下面的代码放到外面的话，会同时执行，娶不到想要的值
-      	    var year = $("#yearOptions option:selected").val();
-      	    //alert(year);
-      	    //console.log("year:" + year);
-      	    //得到学期
-      	    var semester = $("#semesterOptions option:selected").val();
-      	    //console.log("semester:" + semester);
-      	    //是否已录入过标识
-      	    var isEntered = true ;
-      	    //调用方法去更新下拉框
-      	    $.showCourses(year,semester,isEntered);*/
+      	   
       	  }
 	});
 	

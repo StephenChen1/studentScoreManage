@@ -181,7 +181,7 @@
             <!-- 修改密码成功后应退出当前登录，使用新密码重新登陆 -->
             <div role="tabpanel" class="tab-pane" id="chan"> 
                 <div class="check-div">
-                	  原始密码为12312313
+                	  密码修改 
                 	<!-- 用于显示用户修改密码操作结果 -->
                    <div align="center"><span id="modifyResult"></span></div>
                 </div>
