@@ -30,7 +30,8 @@ public interface TeachDao {
 
 	public List<String> getYearsByTeacherId(@Param("teacherId")String teacherId);
 
-
+	//获取学生年份
+	public List<String> getYearsByStudentId(@Param("studentId")String studentId);
 
 	public List<String> getTeacherIDs(@Param("course_id") String course_id, @Param("year") String year,
 			@Param("semester") int semester);

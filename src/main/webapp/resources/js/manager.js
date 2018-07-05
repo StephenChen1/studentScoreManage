@@ -1,22 +1,18 @@
 (function ($) {
-        //函数定义，得到所有教师ID和教师姓名，展示在教师ID下拉框     教师名（ID）
-        $.showAllTeacherInSelect = function () {
+        //函数定义，得到所有教师ID，展示在教师ID下拉框
+        $.showAllTeacher = function () {
         	  //参数 ：无
-              //返回教师ID和姓名的对象数组
+              //返回教师ID数组
               $.ajax({
               	  type : "post",
-              	  url:"../teacher/getAllTeachers",
-              	  contentType:"application/json",
-                  
+              	  url:"../teacher/all",
+              	  contentType:"application/json",   
                   success:function(result){
                 	  $("#teacherIdOptions").find("option").remove();   
            	         //把安排课程页面  教师ID下拉框填上
-             	      for(var i = 0 ; i < result.length ; i ++){   
-             	    	  //教师ID,存于value，方便后面获取
-             	    	  var teacherId = result[i].teacherId;
-             	    	  // 教师名（ID）
-             	    	  var text = result[i].teacherName +"("+teacherId+")";
-             	    	  $("#teacherIdOptions").append("<option value='"+teacherId+"'>"+text+"</option>"); 
+             	      for(var i = 0 ; i < result.length ; i ++){            
+             	    	  var text = result[i];
+             	    	  $("#teacherIdOptions").append("<option value='"+text+"'>"+text+"</option>"); 
              	      }
                   } 	       
               });
@@ -31,7 +27,6 @@
               	  type : "post",
               	  url:"../course/all",
               	  contentType:"application/json",
-                  
                   success:function(result){
                 	  $("#courseIDOptions").find("option").remove();   
            	         //把安排课程页面  教师ID下拉框填上
@@ -74,11 +69,11 @@
 
 
 $(document).ready(function(){
-	
-	//通过教师id查到教师信息,显示在界面左上角，教师Id由后台调用cookie得到
-	/*$.ajax({
+	//TODO 测试
+	//通过教务员id查到教务员信息,显示在界面左上角，教务员Id由后台调用cookie得到
+	$.ajax({
     	  type : "post",
-    	  url:"../manajor/getNowManager",
+    	  url:"../manager/getCurrentManager",
     	  contentType:"application/json",
           
           success:function(result){
@@ -87,9 +82,9 @@ $(document).ready(function(){
         	  $("#userName").text(result.managerName);
         	  $("#userId").text(result.managerId);  
         }
-	});*/
+	});
 	
-	
+
 	
 	//安排课程界面事件开始
 	
@@ -125,10 +120,11 @@ $(document).ready(function(){
 				year:year,
 				semester:semester
 		}
+		//TODO 测试
 		//AJAX交互，添加一条教学安排信息,返回布尔值
 		$.ajax({
 	    	  type : "post",
-	    	  url:"../teach/addTeachMessage",
+	    	  url:"../manager/arrange",
 	    	  contentType:"application/json",
 	    	  data:JSON.stringify(data),
 	          success:function(result){
@@ -167,13 +163,13 @@ $(document).ready(function(){
 		$.showAllCourseInSelect(theSelect);
 		
 		//刷新学年下拉框
-		
+		$.showAllYearInSelect();
 		
 	});
 	
 	
 	//弹出框查看按钮点击事件
-	$("#").click(function(){
+	$("#serchTeacher").click(function(){
 		//得到课程ID
 		var courseId = $("#courseIDSelect option:selected").val();
 		//得到学年
@@ -186,10 +182,11 @@ $(document).ready(function(){
 			    year:year,
 			    semester:semester
 		}
+		//TODO 测试
 		//AJAX与后台交互，得到该课程的任课教师信息对象列表，并把循环展示在表格
 		$.ajax({
       	  	type : "post",
-      	  	url:"../teach/getOneTeachTeachers",
+      	  	url:"../manager/getTeachers",
       	  	contentType:"application/json",
             data:JSON.stringify(data),
             success:function(result){
@@ -227,10 +224,11 @@ $(document).ready(function(){
 				teacherName: teacherName ,
 				teacherPhone:teacherPhone
 		}
+		//TODO 测试
 		//AJAX与后台交互，添加一名教师信息，返回布尔值
 		$.ajax({
 	    	  type : "post",
-	    	  url:"../teacher/addOneTeacher",
+	    	  url:"../manager/addTeacher",
 	    	  contentType:"application/json",
 	    	  data:JSON.stringify(data),
 	          success:function(result){
@@ -273,10 +271,11 @@ $(document).ready(function(){
 			  classes:classes ,
 			  phone:phone
 		}
+		//TODO 改后台
 		//AJAX后台交互，添加一名学生，返回布尔值
 		$.ajax({
 	    	  type : "post",
-	    	  url:"../student/addOneStudent",
+	    	  url:"../manager/addStudent",
 	    	  contentType:"application/json",
 	    	  data:JSON.stringify(data),
 	          success:function(result){
@@ -302,13 +301,13 @@ $(document).ready(function(){
 	//修改密码模块开始
 	
 	//修改按钮点击事件
-	$("#").click(function(){
+	$("#modifyBtn").click(function(){
 		//得到ID
-		var id = $("#").val();
+		var id = $("#userId").val();
 		//得到新密码
-		var newpassword = $("#").val();
+		var newpassword = $("#newPassword").val();
 		//得到确认密码
-		var defineNewPassword = $("#").val();
+		var defineNewPassword = $("#defineNewPassword").val();
 		//判断两个密码是否相同,则与后台交互
 		if(newpassword == defineNewPassword){
 			//封装数据
@@ -316,10 +315,11 @@ $(document).ready(function(){
 					id: id ,
 					password:newpassword
 			}
+			//TODO 改后台
 			//AJAX后台交互,修改该ID的用户的密码
 			$.ajax({
 		    	  type : "post",
-		    	  url:"../login/modifyPassword",
+		    	  url:"../manager/modifyPassword",
 		    	  contentType:"application/json",
 		    	  data:JSON.stringify(data),
 		          success:function(result){
@@ -343,5 +343,4 @@ $(document).ready(function(){
 		
 	});
 	//修改密码模块结束
-	
 });

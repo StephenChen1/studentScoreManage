@@ -21,5 +21,17 @@ public interface StudentService {
 	 * @return
 	 */
 	boolean addStudent(String id,String name,String classes,String phone);
+	
+	/**
+	 * 根据学生ID得到该学生的信息
+	 * @param teacherId
+	 * @return
+	 */
+	Student getStudentMessageById(String studentId);
+	
+	//根据学生Id获取数据库中保存的密码
+	String getStudentRawPassword(String studentId);
+	
+	
 }
 

@@ -1,6 +1,7 @@
 package web;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,34 +18,44 @@ import service.TeacherService;
 public class TeacherController {
 
 	@Autowired
-	private TeacherService teacherService ;
+	private TeacherService teacherService;
 	@Autowired
-	private TeachService teachService ;
-	
+	private TeachService teachService;
+
 	@RequestMapping("/getTeacherMessage")
 	@ResponseBody
-	//通过@CookieValue("teacher_id") String teacherId获取教师id
-	public Teacher getNowLoginTeacherMessage(@CookieValue(value = "teacher_id", required = false) String teacherId){
-		
-		if(teacherId != null){
+	// 通过@CookieValue("teacher_id") String teacherId获取教师id
+	public Teacher getNowLoginTeacherMessage(@CookieValue(value = "teacher_id", required = false) String teacherId) {
+
+		if (teacherId != null) {
 			Teacher teacher = teacherService.getTeacherMessageById(teacherId);
-			return teacher ;
+			return teacher;
 		}
-		
-		return null ;		
-	 }
-	
+
+		return null;
+	}
+
 	@RequestMapping("/getYear")
 	@ResponseBody
-	//通过@CookieValue("teacher_id") String teacherId获取教师id
-	public List<String> getYear(@CookieValue(value = "teacher_id", required = false) String teacherId){
-		
-		if(teacherId != null){
+	// 通过@CookieValue("teacher_id") String teacherId获取教师id
+	public List<String> getYear(@CookieValue(value = "teacher_id", required = false) String teacherId) {
+
+		if (teacherId != null) {
 			List<String> years = teachService.getYear(teacherId);
-			return years ;
+			return years;
 		}
-		
-		return null ;		
-	 }
-	
+
+		return null;
+	}
+
+	/**
+	 * 返回所有教师名和教师ID
+	 * @return
+	 */
+	@RequestMapping("/all")
+	@ResponseBody
+	public List<Map<String, String>> getAllTeachers() {
+		List<Map<String, String>> list = teacherService.getAllTeacherIdAndName();
+		return list;
+	}
 }

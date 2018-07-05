@@ -48,7 +48,7 @@
         }
         
         
-        //初始化年份下拉框,然后根据年份，学期来刷新课程下拉框
+        //初始化年份下拉框
         $.initYearsAndCourses = function (isEntered) {
         	//初始化年份下拉框
         	$.ajax({

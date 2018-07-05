@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import dto.SelectForm;
 import dto.TeachId;
+import dto.YearAndSemesterRequest;
 import entity.CourseSimpleMessage;
 import entity.ScoreMessage;
+import entity.StudentScoreMessage;
 import service.CourseService;
 
 @Controller
@@ -65,6 +67,18 @@ public class CourseController {
 		
 	}
 	
+	//获取学生Id和下拉框选择的年份与学期，查询该生的该学年对应学期的所有成绩
+	@RequestMapping("/getScores")
+	@ResponseBody
+	public List<StudentScoreMessage> getScores(@CookieValue(value = "student_id", required = false) String studentId,@RequestBody YearAndSemesterRequest yearAndSemesterRequest){
+		String year = yearAndSemesterRequest.getYear();
+		String semester=yearAndSemesterRequest.getSemester();
+		//传值查找
+		List<StudentScoreMessage> scores = courseService.getStudentScore(studentId,year,semester);
+		return scores ;
+		/*System.out.println(studentId+"    "+year+"    "+semester);
+		return null;*/
+	}
 	//以json格式返回所有课程名与课程ID
 	@RequestMapping("/all")
 	@ResponseBody
