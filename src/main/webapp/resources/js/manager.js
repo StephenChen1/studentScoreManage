@@ -29,7 +29,7 @@
               //返回课程ID和课程名的对象数组
               $.ajax({
               	  type : "post",
-              	  url:"../course/getAllCourses",
+              	  url:"../course/all",
               	  contentType:"application/json",
                   
                   success:function(result){

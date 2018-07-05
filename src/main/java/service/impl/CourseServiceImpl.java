@@ -56,8 +56,8 @@ public class CourseServiceImpl implements CourseService {
 		for (Course c : courseList) {
 			map = new HashMap<String, String>();
 			map.clear();
-			map.put("course_id", c.getCourseId());
-			map.put("course_name", c.getName());
+			map.put("courseId", c.getCourseId());
+			map.put("courseName", c.getName());
 			list.add(map);
 		}
 		return list;

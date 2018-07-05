@@ -75,7 +75,8 @@
                     <p id="userName">stephen</p>
                     <p><span id = "userId">201525010507</span></p>
                     <p>
-                        <a href = "#">退出登录</a>
+                        <!-- 返回登录界面，删除cookie -->
+                        <a href = "../login/index">退出登录</a>
                     </p>
                 </div>
                 <div class="meun-title">账号管理</div>

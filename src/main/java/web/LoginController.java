@@ -53,7 +53,7 @@ public class LoginController {
 			addCookie(response,"manager_id",id);
 			return "manager";
 		}else{
-			return "login";
+			return "loginIndex";
 		}
 	}
 	

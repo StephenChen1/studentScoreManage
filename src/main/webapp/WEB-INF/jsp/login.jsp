@@ -2,37 +2,80 @@
 	pageEncoding="UTF-8"%>
 <!-- 引入jstl -->
 <%@include file="common/tag.jsp" %>
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="zh-CN">
-<head>
-<%@include file="common/head.jsp"%>
-<title>登录</title>
-</head>
-<body>
-<br><br><br><br>
-	<div align = "center">
-	   <span  id = "loginTip"></span><br>
-	   <label for="userId">账号：</label>
-	   <input name= "userId" type = "text" id = "userId"><br>
-	   <label for="password">密码：</label>
-	   <input name = "password" type = "password" id = "password"><br>
-	   <label class = "radio_inline">
-	    <input type = "radio" name = "position" id = "student" value = "student" checked>学生
-	 </label> 
-	 <label class = "radio_inline">
-	    <input type = "radio" name = "position" id = "teacher" value = "teacher">教师
-	 </label>
-	 <label class = "radio_inline">
-	    <input type = "radio" name = "position" id = "manager" value = "manager">教务员
-	 </label>
-	 <br>
-	 <button class = "btn btn_login" id = "login">登录</button>   
-	</div>
-
-	<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    
+	<head>
+	 	<%@include file="common/head.jsp"%>
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+		<title>成绩管理系统登录</title>
+		<!-- Custom Theme files -->
+		<link href="${basePath}resources/css/loginIndex.css" rel="stylesheet" type="text/css" media="all"/>
+		<!-- Custom Theme files -->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+		<meta name="keywords" content="成绩管理系统登录" />
+		<!--Google Fonts-->
+		<!--<link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+		--><!--Google Fonts-->
+	</head>
+	<body>
+		<!--header start here-->
+<		<div class="login-form">
+			<div class="top-login">
+				<span><img src="${basePath}resources/images/group.png" alt=""/></span>
+			</div>
+			<h1>成绩管理系统登录</h1>
+			<div class="login-top">
+			<div>
+				<div class="login-ic">
+					<i class="icon"></i>
+					<input type="text" id = "userId"/>
+					<div class="clear"> </div>
+				</div>
+				<div class="login-ic">
+					<i class="icon"></i>
+					<input type="password" id = "password"/>
+					<div class="clear"> </div>
+					<div id = "loginTip"> </div>
+				</div>
+				 <div class="login-ic">
+				 <table>
+				    <tr>
+					<th class="col-xs-5">
+						<label class = "radio_inline" >
+							<input type = "radio" name = "position" id = "student" value = "student" checked>学生
+						</label> 
+					</th>
+					<th class="col-xs-4">
+						<label class = "radio_inline" >
+							<input type = "radio" name = "position" id = "teacher" value = "teacher">教师
+						</label>
+					</th>
+					<th class="col-xs-3">
+						<label class = "radio_inline">
+							<input type = "radio" name = "position" id = "manager" value = "manager">教务员
+						</label>
+					</th>
+					</tr>
+					</table>
+				</div> 
+				
+				
+			
+				<div class="log-bwn">
+					<input type = "submit"  id="login1" >
+				</div>
+				</div>
+			</div>
+			<p class="copy">© 2018 602猪旭炮蕉</p>
+     </div>		
+    <!--header start here-->
+   </body>
+   <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
 	<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 	<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	<script src="${basePath}resources/js/login.js"  type="text/javascript"></script>
-</body>
+    <script src="${basePath}resources/js/login.js"  type="text/javascript"></script>
 </html>

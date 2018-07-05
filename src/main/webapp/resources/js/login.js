@@ -1,4 +1,3 @@
-
 (function ($) {
         //函数定义
         $.navigate = function (position,id) {
@@ -15,7 +14,7 @@ $(document).ready(function(){
 	//隐藏loginTip
 	$("#loginTip").hide();
 			
-  $("#login").click(function(){
+  $("#login1").click(function(){
     console.log("点击了登录");
     var id = $("#userId").val();
     var password = $("#password").val();
