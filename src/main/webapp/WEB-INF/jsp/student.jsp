@@ -75,13 +75,15 @@
                     <p><label>姓名：</label><span id = "userName"></span></p>
                     <p><label>学号：</label><span id = "userId"></span></p>
                     <p>
-                        <a href = "#">退出登录</a>
+                        <!-- <a href = "#">退出登录</a> -->
+                        <!-- 退出登录按钮 -->
+						<button type="button" class="btn btn-default btn-sm" id = "exitLogin">退出登录</button>
                     </p>
                 </div>
-                <div class="meun-title">账号管理</div>
+                <div class="meun-title">功能</div>
                 <div class="meun-item meun-item-active" href="#char" aria-controls="char" role="tab" data-toggle="tab"><img src="${basePath}resources/images/icon_chara_grey.png">查询成绩</div>
                 <div class="meun-item" href="#chan" aria-controls="chan" role="tab" data-toggle="tab"><img src="${basePath}resources/images/icon_change_grey.png">修改密码</div>
-                <div class="meun-item" href="#chan" aria-controls="chan" role="tab" data-toggle="tab"><img src="${basePath}resources/images/icon_change_grey.png">导出成绩</div>
+                <div class="meun-item" href="#export" aria-controls="export" role="tab" data-toggle="tab"><img src="${basePath}resources/images/icon_change_grey.png">导出成绩</div>
 			</div>
 			
             <!-- 右侧具体内容栏目 -->
@@ -175,48 +177,67 @@
                 <!-- /.modal -->
 
             </div>
-            <!--账号管理模块结束 -->
+            		<!--成绩查询模块结束 -->
            
-            <!-- 修改密码模块 -->
-            <!-- 修改密码成功后应退出当前登录，使用新密码重新登陆 -->
-            <div role="tabpanel" class="tab-pane" id="chan"> 
-                <div class="check-div">
-                	  密码修改 
-                	<!-- 用于显示用户修改密码操作结果 -->
-                   <div align="center"><span id="modifyResult"></span></div>
-                </div>
-                <div style="padding: 50px 0;margin-top: 50px;background-color: #fff; text-align: right;width: 420px;margin: 50px auto;">
-                    <form class="form-horizontal">
-                        <div class="form-group">
-                            <label for="sKnot" class="col-xs-4 control-label">原密码：</label>
-                            <div class="col-xs-5">
-                                <input type="" class="form-control input-sm duiqi" id="rawPassword" placeholder="" style="margin-top: 7px;">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="sKnot" class="col-xs-4 control-label">新密码：</label>
-                            <div class="col-xs-5">
-                                <input type="" class="form-control input-sm duiqi" id="newPassword" placeholder="" style="margin-top: 7px;">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="sKnot" class="col-xs-4 control-label">重复密码：</label>
-                            <div class="col-xs-5">
-                                <input type="" class="form-control input-sm duiqi" id="confirmPassword" placeholder="" style="margin-top: 7px;">
-                            </div>
-                        </div>
-                        <div class="form-group text-right">
-                            <div class="col-xs-offset-4 col-xs-5" style="margin-left: 169px;">
-                                <button type="reset" class="btn btn-xs btn-white">取 消</button>
-                                <button type="button" class="btn btn-xs btn-green" data-dismiss="modal" id = "save">保存</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+            		<!-- 修改密码模块 -->
+            		<!-- 修改密码成功后应退出当前登录，使用新密码重新登陆 -->
+            		<div role="tabpanel" class="tab-pane" id="chan"> 
+                		<div class="check-div">
+                	  		密码修改 
+                			<!-- 用于显示用户修改密码操作结果 -->
+                   			<div align="center"><span id="modifyResult"></span></div>
+               			</div>
+                		<div style="padding: 50px 0;margin-top: 50px;background-color: #fff; text-align: right;width: 420px;margin: 50px auto;">
+                    		<form class="form-horizontal">
+                        		<div class="form-group">
+                            		<label for="sKnot" class="col-xs-4 control-label">原密码：</label>
+                            		<div class="col-xs-5">
+                                		<input type="" class="form-control input-sm duiqi" id="rawPassword" placeholder="" style="margin-top: 7px;">
+                            		</div>
+                        		</div>
+                        		<div class="form-group">
+                            		<label for="sKnot" class="col-xs-4 control-label">新密码：</label>
+                            		<div class="col-xs-5">
+                                		<input type="" class="form-control input-sm duiqi" id="newPassword" placeholder="" style="margin-top: 7px;">
+                            		</div>
+                        		</div>
+                        		<div class="form-group">
+                            		<label for="sKnot" class="col-xs-4 control-label">重复密码：</label>
+                            		<div class="col-xs-5">
+                                		<input type="" class="form-control input-sm duiqi" id="confirmPassword" placeholder="" style="margin-top: 7px;">
+                            		</div>
+                        		</div>
+                        		<div class="form-group text-right">
+                            		<div class="col-xs-offset-4 col-xs-5" style="margin-left: 169px;">
+                                		<button type="reset" class="btn btn-xs btn-white">取 消</button>
+                                		<button type="button" class="btn btn-xs btn-green" data-dismiss="modal" id = "save">保存</button>
+                            		</div>
+                        		</div>
+                    	</form>
+                	</div>
 
-            </div>
+            	</div>
 		    <!--修改密码模块结束(上面的div) -->
-          </div> 
+		    
+		    
+		    <!-- 导出模块 -->
+            	<!-- 修改密码成功后应退出当前登录，使用新密码重新登陆 -->
+            	<div role="tabpanel" class="tab-pane" id="export"> 
+                	<div class="check-div">
+                	  		成绩导出 
+                		<!-- 用于显示用户修改密码操作结果 -->
+                   		<div align="center"><span id="export2"></span></div>
+               		</div>
+                	<div align = "center">
+                    		<label class = "text-info">该功能尚未上线！敬请期待！</label>
+                	</div>
+
+            	</div>
+		    <!--修改密码模块结束(上面的div) -->
+		    
+		    
+		    
+         	 </div> 
             
         </div>
     </div>
@@ -261,5 +282,6 @@
 	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 	<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<script src="${basePath}resources/js/student.js"  type="text/javascript"></script>
+	<script src="${basePath}resources/js/exitLogin.js"  type="text/javascript"></script>
 </body>
 </html>

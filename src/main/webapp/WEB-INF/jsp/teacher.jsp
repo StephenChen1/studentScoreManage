@@ -75,8 +75,10 @@
                     <p id="userName">stephen</p>
                     <p><span id = "userId">201525010507</span></p>
                     <p>
-                        <!-- 返回登录界面，删除cookie -->
-                        <a href = "../login/index">退出登录</a>
+                        <!-- <!-- 返回登录界面，删除cookie 
+                        <a class = ""href = "../login/index" id = "exitLogin">退出登录</a> -->
+                    	<!-- 退出登录按钮 -->
+						<button type="button" class="btn btn-default btn-sm" id = "exitLogin">退出登录</button>
                     </p>
                 </div>
                 <div class="meun-title">账号管理</div>
@@ -402,5 +404,7 @@
 	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 	<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<script src="${basePath}resources/js/teacher.js"  type="text/javascript"></script>
+	<script src="${basePath}resources/js/exitLogin.js"  type="text/javascript"></script>
+	
 </body>
 </html>

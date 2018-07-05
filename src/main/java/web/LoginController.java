@@ -66,5 +66,20 @@ public class LoginController {
         response.addCookie(cookie);
 	}
 	
+	//退出登录操作，删除cookie，返回登录界面
+	@RequestMapping("/exit")
+	public String exitLogin(HttpServletRequest request,HttpServletResponse response){
+		
+		//获取cookie
+		Cookie[] cookies = request.getCookies();
+		//迭代删除cookie
+		for (Cookie cookie: cookies) {
+			cookie.setMaxAge(0);
+			response.addCookie(cookie);
+		}
+		
+		return "login";
+	}
+	
 	
 }

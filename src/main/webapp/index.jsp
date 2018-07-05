@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <!DOCTYPE HTML>
-<html>    
+<html lang="zh-CN">    
 	<head>
 		<!-- 该页面只做转发作用 -->
 		<title>成绩管理系统登录</title>
