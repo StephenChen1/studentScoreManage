@@ -22,7 +22,7 @@
 	</head>
 	<body>
 		<!--header start here-->
-<		<div class="login-form">
+		<div class="login-form">
 			<div class="top-login">
 				<span><img src="${basePath}resources/images/group.png" alt=""/></span>
 			</div>
